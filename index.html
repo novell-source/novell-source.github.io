@@ -1,1 +1,85 @@
-hi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Conway's game of life</title>
+	<style>
+		button, #object {
+			background-color: white;
+			border-radius: 6px;
+
+			font-size: 20px;
+		}
+
+	</style>
+</head>
+
+<body style="font-size: 20px; width: min-content; border: 2px solid lightgray; padding: 5px 5px 160px 5px; border-radius: 10px">
+<h1 style="font-size: 26px"> Conway's Game of Life </h1>
+<main onmouseup="mouseclick(false)" onmousedown="mouseclick(true); mouseclicked()">
+	<canvas id="canvas" onmousemove="mouseclicked('move')" width="1200" height="600"
+			style="border:1px solid #000000;">
+	</canvas>
+</main>
+<br>
+<tt id="info" style="font-family: Serif,serif; float: right"></tt>
+<button onclick="buttonpressed('start_stop')">start/stop</button>
+<button onclick="buttonpressed('clear')">clear</button>
+
+<select id="object">
+	<option value="none">none</option>
+	<option value="glider">glider</option>
+	<option value="LWSS">LWSS</option>
+	<option value="HWSS">HWSS</option>
+	<option value="GGG">GGG</option>
+	<option value="eraser">eraser</option>
+
+</select>
+<br>
+<label>
+	speed
+	<input style="direction: rtl; width: 60px" type="range" oninput="updateSpeed(this)" min="3" max="600" value="60">
+</label>
+<label>
+	cellsize
+	<input style=" width: 60px" content="we" type="range" oninput="updateCellSize(this)" min="1" max="60" value="8">
+</label>
+
+<br>
+<div style="margin-bottom: 155px; float: left">
+	<label for="alglife">neighbours needed:</label>
+	<select multiple id="alglife" onchange="changeLifeAlg()"
+			style=" margin: 30px 5px -155px 10px;padding: 3px; height: 185px">
+
+		<option value="0">0</option>
+		<option value="1">1</option>
+		<option value="2" selected>2</option>
+		<option value="3" selected>3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+	</select>
+</div>
+<div>
+	<div style="width: 240px"></div>
+	<label for="algdead">for&nbsp;reproduction:</label>
+
+	<select multiple id="algdead" onchange="changeDeadAlg()"
+			style=" margin-top: 30px; margin-left: 10px; margin-bottom: -155px; padding: 3px; height: 185px">
+
+		<option value="0">0</option>
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3" selected>3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+	</select>
+</div>
+<script src="conway/conway.js"></script>
+</body>
+</html>
